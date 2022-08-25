@@ -1,0 +1,13 @@
+.blackBG{
+    background-color: #333;
+    color:#fff;
+}
+.logo span{
+    color: red;
+}
+span.orange{
+    color:coral;
+}
+.RightDivInFooter, .LeftDivInFooter{
+    width:25%;
+}

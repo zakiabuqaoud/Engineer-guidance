@@ -1,0 +1,25 @@
+/*Nav Logo*/
+nav{
+    background-color: #C1C1C1;
+}
+nav .logo{
+    color: cornflowerblue;
+}
+nav .logo span{
+    color:red;
+}
+
+/*Nav UL*/
+nav ul{
+    list-style: none;
+    text-decoration: none;
+    width: 40%;
+}
+nav ul li {
+    cursor: pointer;
+    text-decoration: none;
+    color:#333;
+}
+
+/*Nav Search*/
+
