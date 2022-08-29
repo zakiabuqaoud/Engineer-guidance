@@ -4,7 +4,16 @@ import {
     GET_SUBJECTS_SUCCESS,
     GET_SUBJECTS_ERROR,
     GET_ONE_SUBJECT_LOADING,
-    GET_ONE_SUBJECT_SUCCESS, GET_ONE_SUBJECT_ERROR, GET_ONE_MAJOR_LOADING, GET_ONE_MAJOR_ERROR, GET_ONE_MAJOR_SUCCESS
+    GET_ONE_SUBJECT_SUCCESS,
+    GET_ONE_SUBJECT_ERROR,
+    GET_ONE_MAJOR_LOADING,
+    GET_ONE_MAJOR_ERROR,
+    GET_ONE_MAJOR_SUCCESS,
+    GET_SUB_SUBJECT_LOADING,
+    GET_SUB_SUBJECT_SUCCESS,
+    GET_SUB_SUBJECT_ERROR,
+    GET_SUB_Major_LOADING,
+    GET_SUB_Majors_LOADING, GET_SUB_Majors_SUCCESS, GET_SUB_Majors_ERROR
 } from "./User.type";
 
 //Get all subject Mec and SW
@@ -80,6 +89,63 @@ export const getOneSubjectAction = (id)=> {
             dispatch({
                 type:GET_ONE_SUBJECT_ERROR,
                 payload:error.getMessage
+            });
+        }
+    }
+}
+
+//get subsubject action
+const getSubSubjectAction = (subjectId) => {
+    return async (dispatch) => {
+
+        dispatch({
+            type: GET_SUB_SUBJECT_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.get(`http://localhost:8000/api/sub-subject/${subjectId}`);
+            //  console.log("sub subject response ", response.data);
+            //localStorege
+            localStorage.setItem("subSubject", JSON.stringify(response.data));
+            //
+            dispatch({
+                type: GET_SUB_SUBJECT_SUCCESS,
+                payload: response.data
+            });
+
+        } catch (error) {
+            dispatch({
+                type: GET_SUB_SUBJECT_ERROR,
+                payload: error.getMessage
+            });
+        }
+    }
+}
+
+//get SubMajor
+
+const getSubMajorsAction = () => {
+    return async (dispatch) => {
+
+        dispatch({
+            type: GET_SUB_Majors_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.get(`http://localhost:8000/api/sub-majors}`);
+            //  console.log("sub subject response ", response.data);
+            //localStorege
+            localStorage.setItem("subMajors", JSON.stringify(response.data));
+            //
+            dispatch({
+                type: GET_SUB_Majors_SUCCESS,
+                payload: response.data
+            });
+
+        } catch (error) {
+            dispatch({
+                type: GET_SUB_Majors_ERROR,
+                payload: error.getMessage
             });
         }
     }

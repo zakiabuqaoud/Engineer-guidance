@@ -10,14 +10,24 @@ const reducers = combineReducers({
     });
 
 // 2 : localStorage to provide initial State
+const studentDetailsLocalStorage = JSON.parse(localStorage.getItem("student")) || {};
 const subjectsLocalStorage = JSON.parse(localStorage.getItem("subjects")) || {};
 const oneSubjectLocalStorage = JSON.parse(localStorage.getItem("oneSubject")) || {};
 const oneMajorLocalStorage = JSON.parse(localStorage.getItem("oneMajor")) || {};
+const subSubjectLocalStorage = JSON.parse(localStorage.getItem("subSubject")) || {};
+const subMajorsLocalStorage = JSON.parse(localStorage.getItem("subMajors")) || {};
+
+
 const initialState = {
     UserReducer:{
         subjects: subjectsLocalStorage,
         oneSubject: oneSubjectLocalStorage,
-        oneMajor:oneMajorLocalStorage
+        oneMajor:oneMajorLocalStorage,
+        subSubject:subSubjectLocalStorage,
+        subMajors:subMajorsLocalStorage,
+    },
+    AuthReducer:{
+        student: studentDetailsLocalStorage,
     }
 }
 

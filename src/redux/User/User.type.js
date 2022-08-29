@@ -13,3 +13,13 @@ export const GET_ONE_SUBJECT_ERROR = "GET_ONE_SUBJECT_ERROR";
 export const GET_ONE_MAJOR_LOADING = "GET_ONE_MAJOR_LOADING";
 export const GET_ONE_MAJOR_SUCCESS = "GET_ONE_MAJOR_SUCCESS";
 export const GET_ONE_MAJOR_ERROR = "GET_ONE_MAJOR_ERROR";
+
+//get sub subject
+export const GET_SUB_SUBJECT_LOADING = "GET_SUB_SUBJECT_LOADING";
+export const GET_SUB_SUBJECT_SUCCESS = "GET_SUB_SUBJECT_SUCCESS";
+export const GET_SUB_SUBJECT_ERROR = "GET_SUB_SUBJECT_ERROR";
+
+//get sub major action
+export const GET_SUB_Majors_LOADING = "GET_SUB_Majors_LOADING";
+export const GET_SUB_Majors_SUCCESS = "GET_SUB_Majors_SUCCESS";
+export const GET_SUB_Majors_ERROR = "GET_SUB_Majors_ERROR";

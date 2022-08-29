@@ -1,6 +1,6 @@
 import Footer from "../../../components/Footer/Footer";
 
-const MyPlanPage = () => {
+const MyPlansPage = () => {
     return(
         <div>
             MyPlanPage
@@ -9,4 +9,4 @@ const MyPlanPage = () => {
     );
 
 }
-export default MyPlanPage;
+export default MyPlansPage;

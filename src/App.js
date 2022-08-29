@@ -11,7 +11,7 @@ import MaterialPage from "./pages/UserPages/MaterialPage/MaterialPage";
 import LoginPage from "./pages/AuthPages/LoginPage/LoginPage";
 import RegisterPage from "./pages/AuthPages/RegisterPage/RegisterPage";
 import GeneralPlanPage from "./pages/StudentPages/GeneralPlanPage/GeneralPlanPage";
-import MyPlanPage from "./pages/StudentPages/MyPlanPage/MyPlanPage";
+import MyPlansPage from "./pages/StudentPages/MyPlansPage/MyPlansPage";
 import StudentSubjectsPage from "./pages/StudentPages/StudentSubjectsPage/StudentSubjectsPage";
 import HelpPage from "./pages/StudentPages/HelpPage/HelpPage";
 import ProfilePage from "./pages/StudentPages/ProfilePage/ProfilePage";
@@ -23,6 +23,7 @@ import SubMajorsManagementPage from "./pages/AdminPages/SubMajorsManagementPage/
 import SubjectsManagementPage from "./pages/AdminPages/SubjectsManagementPage/SubjectsManagementPage";
 import StudentsManagementPage from "./pages/AdminPages/StudentsManagementPage/StudentsManagementPage";
 import AdminsManagementPage from "./pages/AdminPages/AdminsManagementPage/AdminsManagementPage";
+import CustomPlanPage from "./pages/StudentPages/CustomPlanPage/CustomPlanPage";
 function App() {
   return (
    <BrowserRouter>
@@ -43,12 +44,13 @@ function App() {
        <Route path="/login" element={<LoginPage/>}/>
        <Route path="/register" element={<RegisterPage/>}/>
 
-       {/* Student Routes 5pages*/}
-       <Route path="/general-plan/:id" element={<GeneralPlanPage/>}/>
-       <Route path="/my-plan/:id" element={<MyPlanPage/>}/>
-       <Route path="/student-subjects/:id" element={<StudentSubjectsPage/>}/>
+       {/* Student Routes 6pages*/}
+       <Route path="/general-plan/:student-id" element={<GeneralPlanPage/>}/>
+       <Route path="/my-plans/:student-id" element={<MyPlansPage/>}/>
+       <Route path="/my-plan/:student-id/:custom-plan-id" element={<CustomPlanPage/>}/>
+       <Route path="/student-subjects/:student-id" element={<StudentSubjectsPage/>}/>
        <Route path="/help" element={<HelpPage/>}/>
-       <Route path="/student-profile/:id" element={<ProfilePage/>}/>
+       <Route path="/student-profile/:student-id" element={<ProfilePage/>}/>
 
        {/* Admin Routes 7pages*/}
        <Route path="/admin-profile/:id" element={<AdminProfilePage/>}/>
