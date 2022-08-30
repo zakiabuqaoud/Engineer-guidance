@@ -13,7 +13,15 @@ import {
     GET_SUB_SUBJECT_SUCCESS,
     GET_SUB_SUBJECT_ERROR,
     GET_SUB_Major_LOADING,
-    GET_SUB_Majors_LOADING, GET_SUB_Majors_SUCCESS, GET_SUB_Majors_ERROR
+    GET_SUB_Majors_LOADING,
+    GET_SUB_Majors_SUCCESS,
+    GET_SUB_Majors_ERROR,
+    GET_ONE_SUB_Major_LOADING,
+    GET_ONE_SUB_Major_SUCCESS,
+    GET_ONE_SUB_Major_ERROR,
+    GET_ONE_SUB_SUBJECT_LOADING,
+    GET_ONE_SUB_SUBJECT_SUCCESS,
+    GET_ONE_SUB_SUBJECT_ERROR
 } from "./User.type";
 
 //Get all subject Mec and SW
@@ -145,6 +153,60 @@ const getSubMajorsAction = () => {
         } catch (error) {
             dispatch({
                 type: GET_SUB_Majors_ERROR,
+                payload: error.getMessage
+            });
+        }
+    }
+}
+
+//get one sub major
+const getOneSubMajorAction = (SubMajorID) => {
+    return async (dispatch) => {
+
+        dispatch({
+            type: GET_ONE_SUB_Major_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.get(`http://localhost:8000/api/sub-major/${SubMajorID}`);
+            //localStorege
+            localStorage.setItem("oneSubMajor", JSON.stringify(response.data));
+            //
+            dispatch({
+                type: GET_ONE_SUB_Major_SUCCESS,
+                payload: response.data
+            });
+
+        } catch (error) {
+            dispatch({
+                type: GET_ONE_SUB_Major_ERROR,
+                payload: error.getMessage
+            });
+        }
+    }
+}
+
+//get one sub subject
+const getOneSubSubjectAction = (subjectId,subSubjectID) => {
+    return async (dispatch) => {
+
+        dispatch({
+            type: GET_ONE_SUB_SUBJECT_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.get(`http://localhost:8000/api/one-sub-subject/${subjectId}/${subSubjectID}`);
+            //localStorege
+            localStorage.setItem("oneSubSubject", JSON.stringify(response.data));
+            //
+            dispatch({
+                type: GET_ONE_SUB_SUBJECT_SUCCESS,
+                payload: response.data
+            });
+
+        } catch (error) {
+            dispatch({
+                type: GET_ONE_SUB_SUBJECT_ERROR,
                 payload: error.getMessage
             });
         }

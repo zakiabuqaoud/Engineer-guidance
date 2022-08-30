@@ -2,10 +2,16 @@ import {
     GET_ONE_MAJOR_ERROR,
     GET_ONE_MAJOR_LOADING,
     GET_ONE_MAJOR_SUCCESS,
+    GET_ONE_SUB_Major_ERROR,
+    GET_ONE_SUB_Major_LOADING,
+    GET_ONE_SUB_Major_SUCCESS, GET_ONE_SUB_SUBJECT_ERROR,
+    GET_ONE_SUB_SUBJECT_LOADING, GET_ONE_SUB_SUBJECT_SUCCESS,
     GET_ONE_SUBJECT_ERROR,
     GET_ONE_SUBJECT_LOADING,
-    GET_ONE_SUBJECT_SUCCESS, GET_SUB_Majors_ERROR,
-    GET_SUB_Majors_LOADING, GET_SUB_Majors_SUCCESS,
+    GET_ONE_SUBJECT_SUCCESS,
+    GET_SUB_Majors_ERROR,
+    GET_SUB_Majors_LOADING,
+    GET_SUB_Majors_SUCCESS,
     GET_SUB_SUBJECT_ERROR,
     GET_SUB_SUBJECT_LOADING,
     GET_SUB_SUBJECT_SUCCESS,
@@ -37,6 +43,16 @@ export const UserReducer =(state= {
         data:{}
     },
     subMajors:{
+        isLoading: false,
+        error:"",
+        data:{}
+    },
+    oneSubMajor:{
+        isLoading: false,
+        error:"",
+        data:{}
+    },
+    oneSubSubject:{
         isLoading: false,
         error:"",
         data:{}
@@ -82,6 +98,20 @@ switch (action.type){
         return {...state,subMajors:{...state,data:action.payload, isLoading:false, error: ""}};
     case GET_SUB_Majors_ERROR:
         return {...state,subMajors:{...state, isLoading:false, error: action.payload}};//problem
+
+    case GET_ONE_SUB_Major_LOADING:
+        return {...state,oneSubMajor:{...state, isLoading:action.payload, error: ""}};
+    case GET_ONE_SUB_Major_SUCCESS:
+        return {...state,oneSubMajor:{...state,data:action.payload, isLoading:false, error: ""}};
+    case GET_ONE_SUB_Major_ERROR:
+        return {...state,oneSubMajor:{...state, isLoading:false, error: action.payload}};//problem
+
+    case GET_ONE_SUB_SUBJECT_LOADING:
+        return {...state,oneSubSubject:{...state, isLoading:action.payload, error: ""}};
+    case GET_ONE_SUB_SUBJECT_SUCCESS:
+        return {...state,oneSubSubject:{...state,data:action.payload, isLoading:false, error: ""}};
+    case GET_ONE_SUB_SUBJECT_ERROR:
+        return {...state,oneSubSubject:{...state, isLoading:false, error: action.payload}};//problem
 
     default:
         return {...state};//problem

@@ -11,7 +11,19 @@ import {
     GET_ONE_CUSTOM_PLAN_ERROR,
     GET_STUDENT_SUBJECTS_LOADING,
     GET_STUDENT_SUBJECTS_SUCCESS,
-    GET_STUDENT_SUBJECTS_ERROR, GET_STUDENT_HELP_LOADING, GET_STUDENT_HELP_SUCCESS, GET_STUDENT_HELP_ERROR,
+    GET_STUDENT_SUBJECTS_ERROR,
+    GET_STUDENT_HELP_LOADING,
+    GET_STUDENT_HELP_SUCCESS,
+    GET_STUDENT_HELP_ERROR,
+    CREATE_CUSTOM_PLAN_LOADING,
+    CREATE_CUSTOM_PLAN_SUCCESS,
+    CREATE_CUSTOM_PLAN_ERROR,
+    UPDATE_CUSTOM_PLAN_SUCCESS,
+    UPDATE_CUSTOM_PLAN_LOADING,
+    UPDATE_CUSTOM_PLAN_ERROR,
+    DELETE_CUSTOM_PLAN_LOADING,
+    DELETE_CUSTOM_PLAN_SUCCESS,
+    DELETE_CUSTOM_PLAN_ERROR,
 } from "./Student.type";
 
 // get Student Profile Action
@@ -176,8 +188,94 @@ export const getStudentHelpAction = () => {
             });
         }
     }
-
-    //
 }
 
+//create custom plan
+export const createCustomPlanAction = (values) => {
+    return async (dispatch,getStore) => {
+        const store = getStore();
+        const token = store?.StudentReducer;
+        const config ={
+            headers :{
+                "content/type" : "application/json",
+                "authorization" : `Bearer ${token}`
+            }
+        }
+        dispatch({
+            type: CREATE_CUSTOM_PLAN_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.post(`http://localhost:8000/api/custom-plan`,values,config);
+            dispatch({
+                type: CREATE_CUSTOM_PLAN_SUCCESS,
+                payload: response.data
+            });
+        } catch (error) {
+            dispatch({
+                type: CREATE_CUSTOM_PLAN_ERROR,
+                payload: error.getMessage
+            });
+        }
+    }
+}
 
+//update custom plan
+export const updateCustomPlanAction = (customPlanID, values) => {
+    return async (dispatch,getStore) => {
+        const store = getStore();
+        const token = store?.StudentReducer;
+        const config ={
+            headers :{
+                "content/type" : "application/json",
+                "authorization" : `Bearer ${token}`
+            }
+        }
+        dispatch({
+            type: UPDATE_CUSTOM_PLAN_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.put(`http://localhost:8000/api/custom-plan/${customPlanID}`,values,config);
+            dispatch({
+                type: UPDATE_CUSTOM_PLAN_SUCCESS,
+                payload: response.data
+            });
+        } catch (error) {
+            dispatch({
+                type: UPDATE_CUSTOM_PLAN_ERROR,
+                payload: error.getMessage
+            });
+        }
+    }
+}
+
+//delete custom plan
+export const deleteCustomPlanAction = (customPlanID) => {
+    return async (dispatch,getStore) => {
+        const store = getStore();
+        const token = store?.StudentReducer;
+        const config ={
+            headers :{
+                "content/type" : "application/json",
+                "authorization" : `Bearer ${token}`
+            }
+        }
+        dispatch({
+            type: DELETE_CUSTOM_PLAN_LOADING,
+            payload: {isLoading: true}
+        });
+        try {
+            const response = await axios.delete(`http://localhost:8000/api/custom-plan/${customPlanID}`,config);
+            dispatch({
+                type: DELETE_CUSTOM_PLAN_SUCCESS,
+                payload: response.data
+            });
+        } catch (error) {
+            dispatch({
+                type: DELETE_CUSTOM_PLAN_ERROR,
+                payload: error.getMessage
+            });
+        }
+    }
+}

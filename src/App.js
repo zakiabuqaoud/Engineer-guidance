@@ -24,6 +24,7 @@ import SubjectsManagementPage from "./pages/AdminPages/SubjectsManagementPage/Su
 import StudentsManagementPage from "./pages/AdminPages/StudentsManagementPage/StudentsManagementPage";
 import AdminsManagementPage from "./pages/AdminPages/AdminsManagementPage/AdminsManagementPage";
 import CustomPlanPage from "./pages/StudentPages/CustomPlanPage/CustomPlanPage";
+import SubSubjectManagementPage from "./pages/AdminPages/SubSubjectManagementPage/SubSubjectManagementPage";
 function App() {
   return (
    <BrowserRouter>
@@ -33,8 +34,8 @@ function App() {
        <Route path="/home" element={ <Navigate to="/" replace />}/>
        <Route path="/about" element={<AboutPage/>}/>
        <Route path="/contact-with-admin" element={<ContactWithAdminPage/>}/>
-       <Route path="/major/:id" element={<SWEngMajorPage/>}/>{/*Bilal*/}
-       <Route path="/mec-eng-major" element={<MecEngMajorPage/>}/>{/*Bilal*/}
+       <Route path="/sw-eng-major/:id" element={<SWEngMajorPage/>}/>
+       <Route path="/mec-eng-major" element={<MecEngMajorPage/>}/>
        <Route path="/sw-materials" element={<SWMaterialsPage/>}/>
        <Route path="/mec-materials" element={<MecMaterialsPage/>}/>
        <Route path="/sw-material/:id" element={<MaterialPage/>}/>
@@ -44,10 +45,11 @@ function App() {
        <Route path="/login" element={<LoginPage/>}/>
        <Route path="/register" element={<RegisterPage/>}/>
 
-       {/* Student Routes 6pages*/}
+       {/* Student Routes 7pages*/}
        <Route path="/general-plan/:student-id" element={<GeneralPlanPage/>}/>
        <Route path="/my-plans/:student-id" element={<MyPlansPage/>}/>
        <Route path="/my-plan/:student-id/:custom-plan-id" element={<CustomPlanPage/>}/>
+       <Route path="/create-custom-plan/:student-id" element={<createCustomPlanPage/>}/>
        <Route path="/student-subjects/:student-id" element={<StudentSubjectsPage/>}/>
        <Route path="/help" element={<HelpPage/>}/>
        <Route path="/student-profile/:student-id" element={<ProfilePage/>}/>
@@ -58,6 +60,7 @@ function App() {
        <Route path="/majors-management" element={<MajorsManagementPage/>}/>
        <Route path="/sub-majors-management" element={<SubMajorsManagementPage/>}/>
        <Route path="/subjects-management" element={<SubjectsManagementPage/>}/>
+       <Route path="/sub-subject-management" element={<SubSubjectManagementPage/>}/>
        <Route path="/students-management" element={<StudentsManagementPage/>}/>
        <Route path="/admins-management" element={<AdminsManagementPage/>}/>
 
